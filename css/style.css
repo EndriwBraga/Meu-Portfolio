@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "montserrat", "poppins";
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 34px;
+  background-color: #fff;
+}
+
+.items h4 {
+  font-weight: 400;
+  font-size: 30px;
+  color: #000;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.presentation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.presentation h3 {
+  font-weight: 600;
+  font-size: 30px;
+  padding-bottom: 30px;
+}
+
+.presentation span {
+  color: #2196f3;
+}
+
+.presentation p {
+  font-family: "Poppins";
+  font-size: 25px;
+}
