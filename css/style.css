@@ -48,7 +48,6 @@ body {
 }
 
 .presentation p {
-  font-family: "Poppins";
   font-size: 25px;
 }
 
@@ -97,6 +96,13 @@ body {
   padding: 50px;
 }
 
+.container_about {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 75px;
+}
+
 .title {
   margin: 0 auto;
   display: flex;
@@ -140,4 +146,87 @@ body {
   line-height: 25px;
   text-align: justify;
   color: #000;
+}
+
+.container_skills {
+  background: rgba(216, 182, 250, 0.1);
+  width: 100%;
+  padding: 50px;
+}
+
+.skills {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.itens_skills {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.skills_text h4 {
+  padding-bottom: 16px;
+  font-size: 30px;
+  color: #9b3ef8;
+}
+
+.skills_text p {
+  font-weight: 400;
+  font-size: 25px;
+  color: #000;
+}
+
+.icons {
+  padding-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.containers_cards {
+  width: 605px;
+  height: 510px;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items_cards {
+  width: 210px;
+  height: 210px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.items_cards h5 {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000;
+}
+
+.items_cards p {
+  padding-top: 14px;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: center;
+  color: #000;
+}
+
+.marginTop {
+  margin-top: 40px;
+  margin-right: 40px;
 }
