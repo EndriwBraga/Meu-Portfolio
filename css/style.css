@@ -308,14 +308,7 @@ header {
   background: rgba(216, 182, 250, 0.1);
 }
 
-.projects_title {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
+/* Container Projects */
 
 .projects_title h4 {
   font-weight: 600;
@@ -331,9 +324,28 @@ header {
   padding-bottom: 30px;
 }
 
-.projects_img ul {
+.projects_title {
   display: flex;
-  text-align: start;
-  flex-direction: row;
-  gap: 80px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.slide li img {
+  display: block;
+  max-width: 100%;
+}
+
+.slide-wrapper {
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+}
+
+.slide li {
+  flex-shrink: 0;
+  width: 80vw;
+  max-width: 800px;
+  margin: 0 20px;
 }
