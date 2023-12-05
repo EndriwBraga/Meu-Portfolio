@@ -304,11 +304,11 @@ header {
   transform: scale(1.1);
 }
 
+/* Container Projects */
+
 .container_projects {
   background: rgba(216, 182, 250, 0.1);
 }
-
-/* Container Projects */
 
 .projects_title h4 {
   font-weight: 600;
@@ -330,11 +330,6 @@ header {
   text-align: center;
 }
 
-.slide li img {
-  display: block;
-  max-width: 100%;
-}
-
 .slide-wrapper {
   overflow: hidden;
 }
@@ -347,5 +342,11 @@ header {
   flex-shrink: 0;
   width: 80vw;
   max-width: 800px;
-  margin: 0 20px;
+  margin: 0 200px;
+  padding-bottom: 50px;
+}
+
+.slide li img {
+  display: block;
+  max-width: 100%;
 }
