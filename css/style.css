@@ -367,6 +367,29 @@ header {
   transform: scale(1);
 }
 
+.button-Nav {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+.button-Nav button {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background: rgb(255, 255, 255, 0.5) url("../assets/icons/arrow.svg") center
+    center no-repeat;
+  color: #9b3ef8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-Nav button.prev {
+  transform: rotate(-180deg);
+}
+
 [data-control="slide"] {
   display: flex;
   justify-content: center;
@@ -387,4 +410,37 @@ header {
 [data-control="slide"] li.active a,
 [data-control="slide"] li a:hover {
   background: #e54;
+}
+
+.custom-control {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
+
+.custom-control li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transform: scale(0.8);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.custom-control li.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-control li img {
+  width: auto;
+  height: 100%;
 }
