@@ -4,27 +4,32 @@ export class Slide {
   constructor(slide, wrapper) {
     this.slide = document.querySelector(slide);
     this.wrapper = document.querySelector(wrapper);
+
+    // Informações de distância e classe ativa
     this.dist = { finalPositon: 0, startX: 0, movement: 0 };
     this.activeClass = "active";
 
     this.changeEvent = new Event("changeEvent");
   }
 
+  // Configura a transição do slide
   transition(active) {
     this.slide.style.transition = active ? "transform .3s" : "";
   }
 
+  // Move o slide para uma posição específica
   moveSlide(distX) {
     this.dist.movePosition = distX;
     this.slide.style.transform = `translate3d(${distX}px, 0, 0)`;
   }
 
+  // Atualiza a posição com base na interação do usuário
   updatePosition(clientX) {
     this.dist.movement = (this.dist.startX - clientX) * 1.5;
-
     return this.dist.finalPositon - this.dist.movement;
   }
 
+  // Manipula o início do evento de arrastar/tocar, tem relação com o clientX do item/element
   onStart(event) {
     let movetype;
     if (event.type === "mousedown") {
@@ -58,6 +63,7 @@ export class Slide {
     this.changeSlideOnEnd();
   }
 
+  // Verifica se deve avançar/retroceder ao finalizar o arrastar/tocar
   changeSlideOnEnd() {
     if (this.dist.movement > 120 && this.index.next !== undefined) {
       this.activeNextSlide();
@@ -70,18 +76,22 @@ export class Slide {
 
   addSlideEvents() {
     this.wrapper.addEventListener("mousedown", this.onStart);
-    this.wrapper.addEventListener("touchstart", this.onStart);
+    this.wrapper.addEventListener("touchstart", this.onStart, {
+      passive: true,
+    });
     this.wrapper.addEventListener("mouseup", this.onEnd);
     this.wrapper.addEventListener("touchend", this.onEnd);
   }
 
   //slide config
 
+  // Calcula a posição do slide com base na largura do wrapper
   slidePosition(slide) {
     const margin = (this.wrapper.offsetWidth - slide.offsetWidth) / 2;
     return -(slide.offsetLeft - margin);
   }
 
+  // Configuração das posições iniciais de cada slide
   slidesConfig() {
     this.slideArray = [...this.slide.children].map((element) => {
       const position = this.slidePosition(element);
@@ -89,6 +99,7 @@ export class Slide {
     });
   }
 
+  // Configuração dos índices de navegação dos slides
   slidesIndexNav(index) {
     const last = this.slideArray.length - 1;
     this.index = {
@@ -97,7 +108,7 @@ export class Slide {
       next: index === last ? undefined : index + 1,
     };
   }
-
+  // Altera para o slide especificado
   changeSlide(index) {
     const activeSlide = this.slideArray[index];
 
@@ -124,6 +135,7 @@ export class Slide {
     if (this.index.next !== undefined) this.changeSlide(this.index.next);
   }
 
+  // Manipula o redimensionamento da janela
   onResize() {
     setTimeout(() => {
       this.slidesConfig();
@@ -131,6 +143,7 @@ export class Slide {
     }, 1000);
   }
 
+  // Adiciona ouvinte de evento de redimensionamento criado no inicio do codigo na classe
   addResizeEvent() {
     window.addEventListener("resize", this.onResize);
   }
@@ -145,6 +158,7 @@ export class Slide {
     this.onResize = debounce(this.onResize.bind(this), 200);
   }
 
+  // Inicializa o slide
   init() {
     this.transition(true);
     this.bindEvents();
@@ -175,20 +189,7 @@ export default class SlideNav extends Slide {
     this.nextElement.addEventListener("click", this.activeNextSlide);
   }
 
-  createControl() {
-    const control = document.createElement("ul");
-    control.dataset.control = "slide";
-
-    this.slideArray.forEach((item, index) => {
-      control.innerHTML += `<li><a href="#slide${index + 1}">${
-        index + 1
-      }</a></li>`;
-    });
-    this.wrapper.appendChild(control);
-
-    return control;
-  }
-
+  // Adiciona ouvintes de eventos para os controles de navegação
   eventControl(item, index) {
     item.addEventListener("click", (event) => {
       event.preventDefault();
@@ -197,6 +198,7 @@ export default class SlideNav extends Slide {
     this.wrapper.addEventListener("changeEvent", this.activeControlItem);
   }
 
+  // verifica o slide ativo para dar um style personalizado no css
   activeControlItem() {
     this.controlArray.forEach((item) =>
       item.classList.remove(this.activeClass)
@@ -204,9 +206,9 @@ export default class SlideNav extends Slide {
     this.controlArray[this.index.active].classList.add(this.activeClass);
   }
 
+  // Adiciona os controles existentes e gerencia eventos pelo eventControl
   addControl(customControl) {
-    this.control =
-      document.querySelector(customControl) || this.createControl();
+    this.control = document.querySelector(customControl);
     this.controlArray = [...this.control.children];
 
     this.activeControlItem();

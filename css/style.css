@@ -286,16 +286,16 @@ header {
 }
 
 .studies_future {
+  display: flex;
+  text-align: center;
+  justify-content: center;
   min-width: 125px;
   height: 125px;
   padding: 20px;
   margin-left: 50px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
   border-radius: 8px;
   box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   transition: border 0.2s ease;
 }
 
@@ -303,8 +303,6 @@ header {
   border: 1px solid #9b3ef8;
   transform: scale(1.1);
 }
-
-/* Container Projects */
 
 .container_projects {
   background: rgba(216, 182, 250, 0.1);
@@ -317,17 +315,21 @@ header {
   padding-bottom: 12px;
 }
 
-.projects_title p {
-  font-weight: 400;
-  font-size: 20px;
-  color: #000;
-  padding-bottom: 30px;
-}
-
 .projects_title {
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.projects_title p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: justify;
+  color: #000;
+  padding-bottom: 30px;
 }
 
 .slide-wrapper {
@@ -367,51 +369,7 @@ header {
   transform: scale(1);
 }
 
-.button-Nav {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin-top: 40px;
-  gap: 10px;
-}
-
-.button-Nav button {
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  background: rgb(255, 255, 255, 0.5) url("../assets/icons/arrow.svg") center
-    center no-repeat;
-  color: #9b3ef8;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button-Nav button.prev {
-  transform: rotate(-180deg);
-}
-
-[data-control="slide"] {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-[data-control="slide"] li a {
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: #fb5;
-  border-radius: 50%;
-  overflow: hidden;
-  text-indent: 9999px;
-  margin: 5px;
-}
-
-[data-control="slide"] li.active a,
-[data-control="slide"] li a:hover {
-  background: #e54;
-}
-
+/* Controles de navegação personalizado na aba projetos.*/
 .custom-control {
   display: flex;
   justify-content: center;
@@ -443,4 +401,37 @@ header {
 .custom-control li img {
   width: auto;
   height: 100%;
+}
+
+.button-Nav {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+.button-Nav button {
+  width: 50px;
+  height: 50px;
+  background: rgba(216, 182, 250, 0.1) url("../assets/icons/arrow.svg") center
+    center no-repeat;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #9b3ef8;
+}
+
+.button-Nav button.prev {
+  transform: rotate(-180deg);
+}
+
+.projects_title p {
+  font-size: 20px;
+  line-height: 25px;
+  text-align: justify;
+  color: #000;
+}
+
+.projects_title span {
+  color: #9b3ef8;
 }
