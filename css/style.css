@@ -329,12 +329,15 @@ header {
   line-height: 20px;
   text-align: justify;
   color: #000;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
+}
+
+.projects_title span {
+  color: #9b3ef8;
 }
 
 .slide-wrapper {
   overflow: hidden;
-  padding-bottom: 50px;
 }
 
 .slide {
@@ -373,7 +376,7 @@ header {
 .custom-control {
   display: flex;
   justify-content: center;
-  margin: 20px auto;
+  margin: auto;
   flex-wrap: wrap;
 }
 
@@ -423,15 +426,4 @@ header {
 
 .button-Nav button.prev {
   transform: rotate(-180deg);
-}
-
-.projects_title p {
-  font-size: 20px;
-  line-height: 25px;
-  text-align: justify;
-  color: #000;
-}
-
-.projects_title span {
-  color: #9b3ef8;
 }
