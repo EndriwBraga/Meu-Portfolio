@@ -306,6 +306,7 @@ header {
 
 .container_projects {
   background: rgba(216, 182, 250, 0.1);
+  padding-bottom: 50px;
 }
 
 .projects_title h4 {
@@ -316,8 +317,6 @@ header {
 }
 
 .projects_title {
-  display: flex;
-  flex-direction: column;
   text-align: center;
   margin: auto;
   max-width: 1200px;
@@ -378,6 +377,7 @@ header {
   justify-content: center;
   margin: auto;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .custom-control li {
@@ -426,4 +426,78 @@ header {
 
 .button-Nav button.prev {
   transform: rotate(-180deg);
+}
+
+.container_contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(216, 182, 250, 0.1);
+  padding: 50px;
+}
+
+.contact h4 {
+  font-weight: 600;
+  font-size: 30px;
+  color: #9b3ef8;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.contact p {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 49px;
+  color: #000;
+}
+
+.contact_icons {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.icons_network {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+
+  width: 210px;
+  height: 210px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.icons_network img {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.name_network {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+}
+
+.container_network_text {
+  display: flex;
+  padding: 20px;
+  text-align: center;
+  justify-content: start;
+}
+
+.name_network_text {
+  font-size: 1.1rem;
+  padding: 10px;
 }
