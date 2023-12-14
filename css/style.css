@@ -561,6 +561,13 @@ header {
 }
 
 .darkModeColor.activeDarkMode {
-  background-color: #141527;
+  background-color: #f501d4;
+}
+
+.paragraph.activeDarkMode {
+  color: white;
+}
+
+h5.activeDarkMode {
   color: white;
 }

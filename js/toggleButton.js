@@ -6,48 +6,33 @@ export default class DarkModeButton {
     // Esse é meus containers com background
     this.darkModeColor = document.querySelectorAll(".darkModeColor");
     // Todos os meus paragrafos
-    this.paragraph = document.querySelectorAll("p");
-
+    this.paragraph = document.querySelectorAll(".paragraph");
+    this.myTitle = document.querySelectorAll("h5");
     // A classe que desejo ativar caso o input seja acionado.
     this.activeDarkMode = "activeDarkMode";
   }
 
-  addClassactiveDarkMode() {
+  addClassActiveDarkMode() {
     this.toggleSwitch.addEventListener("click", () => {
       this.toggleSwitch.classList.toggle(this.activeDarkMode);
 
-      if (this.toggleSwitch.classList.contains(this.activeDarkMode)) {
-        this.darkModeColor.forEach((element) => {
-          element.classList.add(this.activeDarkMode);
-        });
-      } else {
-        this.darkModeColor.forEach((element) => {
-          element.classList.remove(this.activeDarkMode);
-        });
-      }
+      this.darkModeColor.forEach((element) => {
+        element.classList.toggle(this.activeDarkMode);
+      });
+
+      this.paragraph.forEach((element) => {
+        element.classList.toggle(this.activeDarkMode);
+      });
     });
-  }
 
-  addClassActiveParagraph() {
-    this.toggleSwitch.addEventListener("click", () => {
-      this.toggleSwitch.classList.toggle(this.activeDarkMode);
-
-      if (this.toggleSwitch.classList.contains(this.activeDarkMode)) {
-        this.addClassActiveParagraph.forEach((element) => {
-          element.classList.add(this.activeDarkMode);
-        });
-      } else {
-        this.addClassActiveParagraph.forEach((element) => {
-          element.classList.remove(this.activeDarkMode);
-        });
-      }
+    this.myTitle.forEach((element) => {
+      element.classList.toggle(this.activeDarkMode);
     });
   }
 
   init() {
-    console.log(this.paragraph);
+    console.log(this.myTitle);
     console.log(this.darkModeColor);
-    this.addClassactiveDarkMode();
-    this.addClassActiveParagraph();
+    this.addClassActiveDarkMode();
   }
 }
