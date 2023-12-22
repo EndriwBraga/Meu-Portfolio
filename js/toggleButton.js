@@ -2,17 +2,23 @@ export default class DarkModeButton {
   constructor() {
     // Esse é meu input
     this.toggleSwitch = document.getElementById("switch");
-    // A classe que desejo ativar caso o input seja acionado.
+
     this.myh3 = document.querySelector("h3");
-    // Esse é meus containers com background
-    this.darkModeColor = document.querySelectorAll(".darkModeColor");
-    // Todos os meus paragrafos
-    this.paragraph = document.querySelectorAll(".paragraph");
-    // Meus titulos da pagina.
+    this.mySpace = document.querySelector(".mySpace");
     this.myTitle = document.querySelectorAll("h5");
+
+    this.darkModeColor = document.querySelectorAll(".darkModeColor");
+
+    this.paragraph = document.querySelectorAll(".paragraph");
+
     // Meus links
     this.MyLinkNavegation = document.querySelectorAll("a");
 
+    this.itemsCard = document.querySelectorAll(".items_cards");
+    this.studiesFuturo = document.querySelectorAll(".studies_future");
+    this.iconsNetwork = document.querySelectorAll(".icons_network");
+
+    // A classe que desejo ativar caso o input seja acionado.
     this.activeDarkMode = "activeDarkMode";
 
     this.addClassActiveDarkMode = this.addClassActiveDarkMode.bind(this);
@@ -23,6 +29,8 @@ export default class DarkModeButton {
       this.toggleSwitch.classList.toggle(this.activeDarkMode);
 
       this.myh3.classList.toggle(this.activeDarkMode);
+
+      this.mySpace.classList.toggle(this.activeDarkMode);
 
       this.darkModeColor.forEach((element) => {
         element.classList.toggle(this.activeDarkMode);
@@ -39,11 +47,23 @@ export default class DarkModeButton {
       this.MyLinkNavegation.forEach((element) => {
         element.classList.toggle(this.activeDarkMode);
       });
+
+      this.itemsCard.forEach((element) => {
+        element.classList.toggle(this.activeDarkMode);
+      });
+
+      this.studiesFuturo.forEach((element) => {
+        element.classList.toggle(this.activeDarkMode);
+      });
+
+      this.iconsNetwork.forEach((element) => {
+        element.classList.toggle(this.activeDarkMode);
+      });
     });
   }
 
   init() {
-    console.log(this.mysvg);
+    console.log(this.mySpace);
     console.log(this.darkModeColor);
     this.addClassActiveDarkMode();
   }

@@ -553,11 +553,11 @@ header {
 .toogle input:checked + label .box,
 .toogle input:checked + .box {
   transform: translateX(3rem);
-  background-color: #f31000;
+  background: rgba(187, 125, 248);
 }
 
 .toogle input:checked + label {
-  background: rgb(125, 248, 228);
+  background-color: #8a2be2;
 }
 
 .darkModeColor.activeDarkMode {
@@ -572,10 +572,26 @@ h5.activeDarkMode {
   color: #8257e6;
 }
 
+.mySpace.activeDarkMode {
+  color: #8257e6;
+}
+
 a.activeDarkMode {
   color: white;
 }
 
 .paragraph.activeDarkMode {
   color: white;
+}
+
+.items_cards.activeDarkMode {
+  background-color: rebeccapurple;
+}
+
+.studies_future.activeDarkMode {
+  background-color: rebeccapurple;
+}
+
+.icons_network.activeDarkMode {
+  background-color: rebeccapurple;
 }
