@@ -1,3 +1,6 @@
+/*  background-color: rebeccapurple;
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +11,12 @@
 
 body {
   font-family: "poppins";
+  background-color: rgba(216, 182, 250, 0.1);
 }
 
-header {
-  background: rgba(216, 182, 250, 0.1);
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .container {
@@ -58,7 +63,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(216, 182, 250, 0.1);
 }
 
 .floating_menu {
@@ -68,7 +72,7 @@ header {
   max-width: 900px;
   width: 100%;
   padding: 12px;
-  background: rgba(216, 182, 250, 0.1);
+
   border: 1px solid #9b3ef8;
   border-radius: 16px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.18);
@@ -93,7 +97,6 @@ header {
 }
 
 .about {
-  background: rgba(216, 182, 250, 0.1);
   width: 100%;
   padding: 50px;
 }
@@ -151,7 +154,6 @@ header {
 }
 
 .container_skills {
-  background: rgba(216, 182, 250, 0.1);
   width: 100%;
   padding: 50px;
 }
@@ -246,7 +248,6 @@ header {
 }
 
 .container_studies {
-  background: rgba(216, 182, 250, 0.1);
   width: 100%;
   padding: 50px;
 }
@@ -305,7 +306,6 @@ header {
 }
 
 .container_projects {
-  background: rgba(216, 182, 250, 0.1);
   padding-bottom: 50px;
 }
 
@@ -433,7 +433,6 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgba(216, 182, 250, 0.1);
   padding: 50px;
 }
 
@@ -504,8 +503,8 @@ header {
 }
 
 .container_footer {
-  background: rgba(176, 129, 255, 1);
-  color: #8a2be2;
+  background-color: #9b3ef8;
+  color: #000;
   padding: 15px;
 }
 
@@ -516,14 +515,12 @@ header {
   font-size: 20px;
 }
 
-/* button toogle */
-
-.toogle {
+.toggle {
   display: flex;
   align-items: center;
 }
 
-.toogle input {
+.toggle input {
   opacity: 0;
   position: absolute;
   width: 6rem;
@@ -531,7 +528,7 @@ header {
   cursor: pointer;
 }
 
-.toogle label {
+.toggle label {
   display: flex;
   align-items: center;
   background: rgba(187, 125, 248);
@@ -542,7 +539,7 @@ header {
   transition: background-color 0.5s ease;
 }
 
-.toogle label .box {
+.toggle label .box {
   background-color: #8a2be2;
   height: 2rem;
   width: 2rem;
@@ -550,48 +547,37 @@ header {
   transition: transform 0.5s ease;
 }
 
-.toogle input:checked + label .box,
-.toogle input:checked + .box {
+.toggle input:checked + label .box,
+.toggle input:checked + .box {
   transform: translateX(3rem);
   background: rgba(187, 125, 248);
 }
 
-.toogle input:checked + label {
+.toggle input:checked + label {
   background-color: #8a2be2;
 }
 
-.darkModeColor.activeDarkMode {
+body.dark {
   background-color: #07091b;
 }
 
-h3.activeDarkMode {
-  color: white;
-}
-
-h5.activeDarkMode {
+.dark .mySpace {
   color: #8257e6;
 }
 
-.mySpace.activeDarkMode {
-  color: #8257e6;
+.dark .paragraph,
+.dark h3,
+.dark .floating_items a,
+.dark .items_cards h5 {
+  color: #fff;
 }
 
-a.activeDarkMode {
-  color: white;
-}
-
-.paragraph.activeDarkMode {
-  color: white;
-}
-
-.items_cards.activeDarkMode {
+.dark .items_cards,
+.dark .studies_future,
+.dark .icons_network {
   background-color: rebeccapurple;
 }
 
-.studies_future.activeDarkMode {
-  background-color: rebeccapurple;
-}
-
-.icons_network.activeDarkMode {
-  background-color: rebeccapurple;
+.dark .button-Nav button {
+  background-color: #07091b;
 }
