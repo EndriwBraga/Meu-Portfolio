@@ -8,9 +8,14 @@ export default class smoothScroll {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
 
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
+        const targetId = anchor.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
       });
     });
   }
