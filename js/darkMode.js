@@ -4,15 +4,17 @@ export default class DarkModeToggle {
     this.svgElements = document.querySelectorAll(".iconsChangeDark");
 
     this.handleModeChange = this.handleModeChange.bind(this);
+
+    this.activeDarkMode = "dark";
   }
 
   handleModeChange() {
     const body = document.querySelector(".body");
     if (this.mode.checked) {
-      body.classList.add("dark");
+      body.classList.add(this.activeDarkMode);
       console.log("O modo escuro foi ativado!");
     } else {
-      body.classList.remove("dark");
+      body.classList.remove(this.activeDarkMode);
       console.log("O modo escuro foi desativado!");
       console.log(this.svgElements);
     }

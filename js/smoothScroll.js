@@ -1,12 +1,12 @@
 export default class smoothScroll {
-  constructor() {
-    this.linksAnchors = document.querySelectorAll('a[href^="#"]');
+  constructor(linkSelector) {
+    this.linksAnchors = document.querySelectorAll(linkSelector);
   }
 
   anchorLink() {
     this.linksAnchors.forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
+      anchor.addEventListener("click", (event) => {
+        event.preventDefault();
 
         const targetId = anchor.getAttribute("href");
         const targetElement = document.querySelector(targetId);
@@ -21,6 +21,9 @@ export default class smoothScroll {
   }
 
   init() {
+    if (this.linksAnchors.length === 0) {
+      return;
+    }
     this.anchorLink();
   }
 }

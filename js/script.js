@@ -10,5 +10,5 @@ slide.addControl(".custom-control");
 const darkMode = new DarkModeToggle();
 darkMode.init();
 
-const scroll = new smoothScroll();
+const scroll = new smoothScroll('a[href^="#"]');
 scroll.init();
