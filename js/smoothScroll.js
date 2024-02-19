@@ -14,4 +14,8 @@ export default class smoothScroll {
       });
     });
   }
+
+  init() {
+    this.anchorLink();
+  }
 }

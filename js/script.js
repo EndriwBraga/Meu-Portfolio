@@ -11,4 +11,4 @@ const darkMode = new DarkModeToggle();
 darkMode.init();
 
 const scroll = new smoothScroll();
-scroll.anchorLink();
+scroll.init();
