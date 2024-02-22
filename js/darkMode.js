@@ -10,14 +10,23 @@ export default class DarkModeToggle {
 
   handleModeChange() {
     const body = document.querySelector(".body");
+    const newColor = this.mode.checked ? "#fff" : "#9b3ef8"; // Cor do modo escuro ou claro
+
     if (this.mode.checked) {
       body.classList.add(this.activeDarkMode);
       console.log("O modo escuro foi ativado!");
     } else {
       body.classList.remove(this.activeDarkMode);
       console.log("O modo escuro foi desativado!");
-      console.log(this.svgElements);
     }
+
+    // Alterar a cor do SVG
+    this.svgElements.forEach((svg) => {
+      const path = svg.querySelector("path");
+      if (path) {
+        path.setAttribute("fill", newColor);
+      }
+    });
   }
 
   addModeChangeListener() {
