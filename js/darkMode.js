@@ -1,7 +1,7 @@
 export default class DarkModeToggle {
   constructor() {
     this.mode = document.getElementById("mode_icon");
-    this.svgElements = document.querySelectorAll(".iconsChangeDark");
+    this.svgElements = document.querySelectorAll(".iconsChangeFillDark");
 
     this.handleModeChange = this.handleModeChange.bind(this);
 
