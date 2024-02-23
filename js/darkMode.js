@@ -1,7 +1,10 @@
 export default class DarkModeToggle {
   constructor() {
     this.mode = document.getElementById("mode_icon");
-    this.svgElements = document.querySelectorAll(".iconsChangeFillDark");
+    this.svgFillElements = document.querySelectorAll(".iconsChangeFillDark");
+    this.svgStrokeElements = document.querySelectorAll(
+      ".iconsChangeStrokeDark"
+    );
 
     this.handleModeChange = this.handleModeChange.bind(this);
 
@@ -10,21 +13,35 @@ export default class DarkModeToggle {
 
   handleModeChange() {
     const body = document.querySelector(".body");
-    const newColor = this.mode.checked ? "#fff" : "#9b3ef8"; // Cor do modo escuro ou claro
+    const newFillColor = this.mode.checked ? "#fff" : "#9b3ef8";
+    const newStrokeColor = this.mode.checked ? "#fff" : "#9b3ef8";
 
     if (this.mode.checked) {
       body.classList.add(this.activeDarkMode);
-      console.log("O modo escuro foi ativado!");
     } else {
       body.classList.remove(this.activeDarkMode);
-      console.log("O modo escuro foi desativado!");
     }
 
-    // Alterar a cor do SVG
-    this.svgElements.forEach((svg) => {
+    this.changeSVGFill(newFillColor);
+    this.changeSVGStroke(newStrokeColor);
+  }
+
+  changeSVGFill(fillColor) {
+    this.svgFillElements.forEach((svg) => {
       const path = svg.querySelector("path");
       if (path) {
-        path.setAttribute("fill", newColor);
+        path.setAttribute("fill", fillColor);
+      }
+    });
+  }
+
+  changeSVGStroke(strokeColor) {
+    this.svgStrokeElements.forEach((svg) => {
+      const paths = svg.querySelectorAll("path");
+      if (paths) {
+        paths.forEach((path) => {
+          path.setAttribute("stroke", strokeColor);
+        });
       }
     });
   }
