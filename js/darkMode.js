@@ -26,6 +26,19 @@ export default class DarkModeToggle {
     this.changeSVGStroke(newStrokeColor);
   }
 
+  checkColorBrowse() {
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+    prefersDarkMode.addEventListener("change", (event) => {
+      if (event.matches) {
+        this.mode.checked = true;
+      } else {
+        this.mode.checked = false;
+      }
+
+      this.handleModeChange();
+    });
+  }
+
   changeSVGFill(fillColor) {
     this.svgFillElements.forEach((svg) => {
       const path = svg.querySelector("path");
@@ -51,6 +64,7 @@ export default class DarkModeToggle {
   }
 
   init() {
+    this.checkColorBrowse();
     this.addModeChangeListener();
   }
 }
