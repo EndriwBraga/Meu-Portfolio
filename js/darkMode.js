@@ -27,15 +27,13 @@ export default class DarkModeToggle {
   }
 
   checkColorBrowse() {
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
-    prefersDarkMode.addEventListener("change", (event) => {
-      if (event.matches) {
-        this.mode.checked = true;
-      } else {
-        this.mode.checked = false;
-      }
+    const self = this;
 
-      this.handleModeChange();
+    document.addEventListener("DOMContentLoaded", function () {
+      const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+      self.mode.checked = prefersDarkMode.matches;
+      self.handleModeChange();
+      console.log("Eu fui chamado");
     });
   }
 
