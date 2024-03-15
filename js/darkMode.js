@@ -1,9 +1,11 @@
 export default class DarkModeToggle {
   constructor() {
-    this.mode = document.getElementById("mode_icon");
-    this.svgFillElements = document.querySelectorAll(".iconsChangeFillDark");
+    this.mode = document.getElementById("js_mode_icon");
+    this.svgFillElements = document.querySelectorAll(
+      ".js-icons-change-fill-dark"
+    );
     this.svgStrokeElements = document.querySelectorAll(
-      ".iconsChangeStrokeDark"
+      ".js-icons-change-stroke-dark"
     );
 
     this.handleModeChange = this.handleModeChange.bind(this);
@@ -21,7 +23,6 @@ export default class DarkModeToggle {
     } else {
       body.classList.remove(this.activeDarkMode);
     }
-
     this.changeSVGFill(newFillColor);
     this.changeSVGStroke(newStrokeColor);
   }

@@ -16,8 +16,8 @@
         <div class="items">
           <h4 class="mySpace">Meu cantinho! 👩‍💻</h4>
           <div class="toggle">
-            <input id="mode_icon" type="checkbox" />
-            <label for="mode_icon" class="label">
+            <input id="js_mode_icon" type="checkbox" />
+            <label for="js_mode_icon" class="label">
               <div class="box"></div>
             </label>
           </div>
@@ -95,7 +95,7 @@
           <div class="icons">
             <a target="_blank" href="/">
               <svg
-                class="iconsChangeFillDark"
+                class="js-icons-change-fill-dark"
                 xmlns="http://www.w3.org/2000/svg"
                 width="45"
                 height="45"
@@ -110,7 +110,7 @@
 
             <a target="_blank" href="https://www.linkedin.com/in/endriw-braga/">
               <svg
-                class="iconsChangeFillDark"
+                class="js-icons-change-fill-dark"
                 xmlns="http://www.w3.org/2000/svg"
                 width="45"
                 height="45"
@@ -124,7 +124,7 @@
             </a>
             <a target="_blank" href="https://github.com/EndriwBraga">
               <svg
-                class="iconsChangeFillDark"
+                class="js-icons-change-fill-dark"
                 xmlns="http://www.w3.org/2000/svg"
                 width="45"
                 height="45"
@@ -149,7 +149,7 @@
             <div class="cards_blur">
               <div class="items_cards">
                 <svg
-                  class="iconsChangeStrokeDark"
+                  class="js-icons-change-stroke-dark"
                   width="50"
                   height="50"
                   stroke-width="1.5"
@@ -178,7 +178,7 @@
               </div>
               <div class="items_cards marginTop">
                 <svg
-                  class="iconsChangeStrokeDark"
+                  class="js-icons-change-stroke-dark"
                   width="50"
                   height="50"
                   stroke-width="1.5"
@@ -215,7 +215,7 @@
             <div class="cards_blur">
               <div class="items_cards marginTop">
                 <svg
-                  class="iconsChangeFillDark"
+                  class="js-icons-change-fill-dark"
                   xmlns="http://www.w3.org/2000/svg"
                   width="50"
                   height="50"
@@ -235,7 +235,7 @@
 
               <div class="items_cards marginTop">
                 <svg
-                  class="iconsChangeStrokeDark"
+                  class="js-icons-change-stroke-dark"
                   xmlns="http://www.w3.org/2000/svg"
                   width="50"
                   height="50"
@@ -267,15 +267,22 @@
       <div class="content_studies">
         <div class="studies">
           <span>Conhecimentos</span>
-          <p class="paragraph">
-            Aqui ira aparecer uma mensagem de forma dinamica futuramente.
+          <p id="message" class="paragraph studies_paragraph">
+            Tenho experiência significativa com Sass, tendo trabalhado em três
+            projetos que utilizam essa tecnologia. Inclusive, este portfólio foi
+            completamente refatorado em Sass, destacando minha proficiência
+            nesta ferramenta de estilo eficiente e poderosa. Passe o mouse em
+            cima dos cards para mais informações!
           </p>
         </div>
 
         <div class="studies_card">
-          <div class="studies_future">
+          <div
+            class="studies_future"
+            data-message="Tenho experiência significativa com Sass, tendo trabalhado em três projetos que utilizam essa tecnologia. Inclusive, este portfólio foi completamente refatorado em Sass, destacando minha proficiência nesta ferramenta de estilo eficiente e poderosa."
+          >
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               width="70"
               height="70"
@@ -287,9 +294,12 @@
               />
             </svg>
           </div>
-          <div class="studies_future">
+          <div
+            class="studies_future"
+            data-message="Mensagem para o card tailwind."
+          >
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               width="75"
               height="75"
               viewBox="0 0 24 24"
@@ -301,9 +311,9 @@
               />
             </svg>
           </div>
-          <div class="studies_future">
+          <div class="studies_future" data-message="Mensagem para o card js.">
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               width="70"
               height="70"
@@ -316,9 +326,12 @@
             </svg>
           </div>
 
-          <div class="studies_future">
+          <div
+            class="studies_future"
+            data-message="Mensagem para o card react."
+          >
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               width="70"
               height="70"
@@ -331,9 +344,9 @@
             </svg>
           </div>
 
-          <div class="studies_future">
+          <div class="studies_future" data-message="Mensagem para o card ts.">
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               width="70"
               height="70"
               viewBox="0 0 32 32"
@@ -346,9 +359,9 @@
             </svg>
           </div>
 
-          <div class="studies_future">
+          <div class="studies_future" data-message="Mensagem para o card vue.">
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               width="70"
               height="70"
@@ -491,7 +504,7 @@
             rel="noopener noreferrer"
           >
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               height="50"
               width="50"
@@ -515,7 +528,7 @@
         <div class="icons_network">
           <a target="_blank" href="https://www.linkedin.com/in/endriw-braga/">
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               height="50"
               width="50"
@@ -540,7 +553,7 @@
             rel="noopener noreferrer"
           >
             <svg
-              class="iconsChangeFillDark"
+              class="js-icons-change-fill-dark"
               xmlns="http://www.w3.org/2000/svg"
               height="50"
               width="50"

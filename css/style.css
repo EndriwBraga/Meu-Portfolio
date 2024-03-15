@@ -2,12 +2,6 @@
 
 */
 
-:root {
-  --purple-title: #9b3ef8;
-  --card-color: #663399;
-  --card-color2: #7d4ba3;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -79,10 +73,10 @@ a {
   max-width: 900px;
   width: 100%;
   padding: 12px;
-
   border: 1px solid #9b3ef8;
   border-radius: 16px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.18);
+  /*margin-top: -75px;  N sei, ainda tou na duvida se coloco o menu logo a baixo da imagem como se ele tivesse sentado em cima do menu*/
 }
 
 .floating_items {
@@ -275,17 +269,20 @@ a {
   width: 40%;
 }
 
+/*posso tirar o center disso depois se eu nao gostar COMENTARIO A APAGAR*/
 .studies span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-bottom: 16px;
   font-size: 25px;
   color: #9b3ef8;
 }
 
-.studies p {
+.studies_paragraph {
   font-weight: 400;
-  font-size: 25px;
+  font-size: 22px;
   color: #000;
-  padding-bottom: 40px;
 }
 
 .studies_card {
@@ -597,4 +594,12 @@ body.dark {
 
 .dark .button-Nav button {
   background-color: #07091b;
+}
+
+.dark .container_footer {
+  background: #040712;
+}
+
+.dark .container_footer span {
+  color: #fff;
 }

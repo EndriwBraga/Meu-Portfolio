@@ -1,6 +1,7 @@
 import SlideNav from "./slide.js";
 import DarkModeToggle from "./darkMode.js";
 import smoothScroll from "./smoothScroll.js";
+import hoverMessagesStudies from "./messagesStudies.js";
 
 const slide = new SlideNav(".slide", ".slide-wrapper");
 slide.init();
@@ -12,3 +13,6 @@ darkMode.init();
 
 const scroll = new smoothScroll('a[href^="#"]');
 scroll.init();
+
+const hoverMessage = new hoverMessagesStudies();
+hoverMessage.init();
