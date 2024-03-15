@@ -604,3 +604,7 @@ body.dark {
 .dark .container_footer span {
   color: #fff;
 }
+
+.hidden {
+  display: none;
+}
