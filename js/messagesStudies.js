@@ -10,7 +10,7 @@ export default class hoverMessagesStudies {
 
   clearMessage() {
     this.messageElement.textContent =
-      "Passe o mouse em cima dos cards para mais informações! Tenho experiência significativa com Sass, tendo trabalhado em três projetos que utilizam essa tecnologia. Inclusive, este portfólio foi completamente refatorado em Sass, destacando minha proficiência nesta ferramenta de estilo eficiente e poderosa.";
+      "Passe o mouse em cima dos cards para mais informações! ";
   }
 
   init() {

@@ -270,7 +270,7 @@ a {
 }
 
 /*posso tirar o center disso depois se eu nao gostar COMENTARIO A APAGAR*/
-.studies span {
+.studies_span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -281,8 +281,9 @@ a {
 
 .studies_paragraph {
   font-weight: 400;
-  font-size: 22px;
+  font-size: 20px;
   color: #000;
+  text-align: justify;
 }
 
 .studies_card {
