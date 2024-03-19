@@ -312,6 +312,10 @@ a {
   transform: scale(1.1);
 }
 
+.studies_hidden {
+  display: none;
+}
+
 .container_projects {
   width: 100%;
   padding: 50px;
@@ -603,8 +607,4 @@ body.dark {
 
 .dark .container_footer span {
   color: #fff;
-}
-
-.hidden {
-  display: none;
 }

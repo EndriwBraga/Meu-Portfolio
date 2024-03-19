@@ -22,12 +22,12 @@ export default class hoverMessagesStudies {
       card.addEventListener("mouseenter", () => {
         const message = card.dataset.message;
         this.showMessage(message);
-        this.messageSurprise.classList.add("hidden");
+        this.messageSurprise.classList.add("studies_hidden");
       });
 
       card.addEventListener("mouseleave", () => {
         this.clearMessage();
-        this.messageSurprise.classList.remove("hidden");
+        this.messageSurprise.classList.remove("studies_hidden");
       });
     });
   }
@@ -50,7 +50,7 @@ export default class hoverMessagesStudies {
           }
 
           if (this.hoveredCards.size === this.cards.length && !this.isHovered) {
-            this.messageSurprise.classList.remove("hidden");
+            this.messageSurprise.classList.remove("studies_hidden");
           }
         }, 200)
       );
@@ -60,5 +60,6 @@ export default class hoverMessagesStudies {
   init() {
     this.cardCounter();
     this.eventMessage();
+    this.replaceWordStudiesFuture();
   }
 }
