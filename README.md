@@ -1,8 +1,11 @@
 # MEU PORTFÓLIO
 
 ## Visão Geral
-Este portfólio foi criado inicialmente para treinar JavaScript, mas gostei tanto do resultado que pretendo continuar aprimorando-o com novas melhorias.
-[🔗 Meu Portfólio] *https://meu-portfolio-ten-blond.vercel.app/*
+Este portfólio foi criado inicialmente para treinar JavaScript, mas gostei tanto do resultado que pretendo continuar aprimorando-o com novas melhorias.  
+[🔗 Meu Portfólio] *https://meu-portfolio-ten-blond.vercel.app/*   
+
+![Imagem Inicial do Portfolio](assets/img/imgPortfolio.png/)
+
                 
 
 ## Tecnologias Utilizadas  
