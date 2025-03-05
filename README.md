@@ -33,6 +33,6 @@ Explicação sobre a organização dos arquivos no projeto:
 - Mensagens dinâmicas nos cards de estudo  
 - Scroll suave para melhor navegação  
 
-<a href="https://meu-portfolio-ten-blond.vercel.app/" target="_blank">
+<a href="https://meu-portfolio-ten-blond.vercel.app/" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/Acessar%20Portfólio-28a745?style=for-the-badge&logo=github&logoColor=white">
 </a>
