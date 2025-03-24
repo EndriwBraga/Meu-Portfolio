@@ -2,6 +2,7 @@ import SlideNav from "./slide.js";
 import DarkModeToggle from "./darkMode.js";
 import smoothScroll from "./smoothScroll.js";
 import hoverMessagesStudies from "./messagesStudies.js";
+import SkillsAnimation from "./skillsAnimation.js";
 
 const slide = new SlideNav(".slide", ".slide-wrapper");
 slide.init();
@@ -16,3 +17,6 @@ scroll.init();
 
 const hoverMessage = new hoverMessagesStudies();
 hoverMessage.init();
+
+const skillsEffect = new SkillsAnimation();
+skillsEffect.init();

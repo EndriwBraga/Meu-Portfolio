@@ -30,6 +30,7 @@ Explicação sobre a organização dos arquivos no projeto:
 📄 slide.js/ → Responsável pelo carrosel de slides da parte "Meus Projetos", com uma navegação atravéz dos icones dos projetos, selecionando o slide e arrastando, também tem a versão mobile desse carrocel nesse arquivo. Essa parte do carrosel fiz com o auxilio da aula do curso de JAVASCRIPT da Origamid pois gostei muito e queria fazer ele o mais completo possivel.   
 📄 smoothScroll.js/ → responsavel pelo scroll suave da pagina ao selecionar um dos links na nav bar.   
 
+
 ## Principais Funcionalidades  
 - Modo escuro automático e manual     
 - Carrossel de projetos interativo    

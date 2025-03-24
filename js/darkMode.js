@@ -34,7 +34,6 @@ export default class DarkModeToggle {
       const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
       self.mode.checked = prefersDarkMode.matches;
       self.handleModeChange();
-      console.log("Eu fui chamado");
     });
   }
 

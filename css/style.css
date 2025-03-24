@@ -608,3 +608,21 @@ body.dark {
 .dark .container_footer span {
   color: #fff;
 }
+
+/* modificação feita quando comecei a criar a skills animation */
+@keyframes moveUpDown {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+.items_cards {
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+/* modificação feita quando comecei a criar a skills animation (entre essas 2 linhas verdes)*/

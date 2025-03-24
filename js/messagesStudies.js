@@ -60,6 +60,5 @@ export default class hoverMessagesStudies {
   init() {
     this.cardCounter();
     this.eventMessage();
-    this.replaceWordStudiesFuture();
   }
 }
