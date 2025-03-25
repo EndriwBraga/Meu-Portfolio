@@ -18,6 +18,15 @@ Explicação sobre a organização dos arquivos no projeto:
 📂 css/ → Contém o arquivo de estilização (style.css). No futuro, pretendo migrar para SASS.  
 📂 js/ → Contém os arquivos responsáveis por tornar o projeto interativo.  
 
+### Explicação SCSS // Iniciando a refatoração do CSS
+
+/scss  
+│── base/          # Reset, cores, tipografia  
+│── components/    # Estilos de botões, inputs, cards  
+│── layouts/       # Estilos de layout como header, footer, etc.  
+│── pages/         # Estilos específicos de páginas  
+│── utils/         # Mixins, variáveis, funções  
+│── main.scss      # Arquivo principal que importa todos os arquivos  
 
 ### Explicação detalhada do que cada modulo do JS faz.
 
