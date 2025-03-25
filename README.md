@@ -41,7 +41,7 @@ Explicação sobre a organização dos arquivos no projeto:
 - O arquivo skillsAnimation.js foi simplificado para manter a funcionalidade essencial, priorizando a manutenção e futuras modificações.
 
 - Optei por usar módulos JavaScript (arquivos .js separados) e classes para estudar mais sobre Orientação a Objetos (OOP). Um exemplo disso é o arquivo slide.js, que utilizou conceitos de herança, encapsulamento e um pouco de abstração.  
-⭐ 2.0
+⭐ 2.0  
 - O arquivo skillsAnimation.js foi refatorado para incorporar mais conceitos de OOP, alinhando-se com o restante do projeto, que foi projetado para seguir boas práticas de programação orientada a objetos.
 
 🏛️ Herança  
