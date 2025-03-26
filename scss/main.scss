@@ -106,9 +106,8 @@
 
   .content_about {
     @include flex-container(center, center);
-
     flex-direction: column;
-    padding: 30px;
+    padding-top: 30px;
     gap: 33px;
   }
 
@@ -139,7 +138,6 @@
 
   .skills {
     @include flex-container(center, center);
-
     max-width: $max-width;
     width: $width-100;
     margin: 0 auto;

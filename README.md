@@ -1,22 +1,43 @@
 # MEU PORTFÓLIO
 
 ## Visão Geral
-Este portfólio foi criado inicialmente para treinar JavaScript, mas gostei tanto do resultado que pretendo continuar aprimorando-o com novas melhorias.  
-[🔗 Meu Portfólio] *https://meu-portfolio-ten-blond.vercel.app/*   
+Este portfólio foi criado para praticar JavaScript, mas agora estou expandindo suas funcionalidades.  
+[🔗 Meu Portfólio](https://meu-portfolio-ten-blond.vercel.app/)
 
 ![Imagem Inicial do Portfolio](assets/img/imgPortfolio.png/)
 
 ## Tecnologias Utilizadas  
 🔶 HTML5  
-🎨 CSS3 (futuramente SASS)  
+🎨 SASS/SCSS
 ⚡ JavaScript (ES6+)
 
-## Estrutura de Pastas
+## 📂 Estrutura de Pastas
 Explicação sobre a organização dos arquivos no projeto:
 
 📂 assets/ → Contém ícones e imagens utilizadas no front-end.  
-📂 css/ → Contém o arquivo de estilização (style.css). No futuro, pretendo migrar para SASS.  
+📂 css/ → Arquivo de estilização gerado pelo SCSS (style.css). 
 📂 js/ → Contém os arquivos responsáveis por tornar o projeto interativo.  
+📂 scss/ → Arquivos SCSS organizados em módulos.
+
+## ⚙️ Instalação e Configuração  
+
+Para configurar e executar o projeto localmente, siga os passos abaixo:   
+
+1️⃣ Clone o repositório  
+
+```git clone  https://github.com/EndriwBraga/Meu-Portfolio.git ```  
+``` cd Meu-Portfolio ```    
+
+2️⃣ Instale as dependências    
+Execute o comando abaixo para instalar as dependências necessárias:    
+
+```npm install```   
+
+3️⃣ Compile os arquivos SCSS    
+
+```npm run sass```   
+
+Observação: O comando npm run sass utiliza a versão local do Sass instalada no projeto para compilar o arquivo scss/main.scss em css/style.css. Além disso, ele monitora automaticamente qualquer alteração nos arquivos SCSS, recompilando o CSS em tempo real.  
 
 ### Explicação SCSS // Iniciando a refatoração do CSS
 
@@ -31,7 +52,7 @@ Explicação sobre a organização dos arquivos no projeto:
 A convenção de usar o underscore (_) no início dos nomes de arquivos SCSS (como _buttons.scss) tem um motivo importante relacionado à organização e compilação 
 dos arquivos SCSS.
 
-### Explicação detalhada do que cada modulo do JS faz.
+### 📜 Explicação detalhada do que cada modulo do JS faz.  
 
 📄 darkMode.js → Responsável por detectar a preferência de cor (modo claro/escuro) do sistema e permitir que o usuário altere manualmente a cor da página.  
 📄 debounce.js → Implementação do padrão debounce para limitar a frequência de chamadas a funções, utilizado em várias partes do projeto.  
@@ -41,30 +62,29 @@ dos arquivos SCSS.
 📄 slide.js → Responsável pelo carrossel de slides na seção "Meus Projetos", permitindo navegação interativa através dos ícones dos projetos, com versão mobile inclusa. Este carrossel foi inspirado em uma aula do curso de JavaScript da Origamid.  
 📄 skillsAnimation.js → Responsável pela animação das skills, movendo-as para cima e depois retornando à sua posição original. Utiliza requestAnimationFrame(), uma funcionalidade nativa do JavaScript, para melhorar a performance da animação.  
 
-### Principais Funcionalidades  
-- Modo escuro automático e manual     
-- Carrossel interativo de projetos    
-- Mensagens dinâmicas nos cards de estudo 
-- Scroll suave para melhor navegação
-- Animação nas habilidades (Skills)
+### ✨ Principais Funcionalidades   
+✅ Modo escuro automático e manual     
+✅ Carrossel interativo de projetos    
+✅ Mensagens dinâmicas nos cards de estudo  
+✅ Scroll suave para melhor navegação  
+✅ Animação nas habilidades (Skills)  
 
-### Depoimento de Eu para Eu // Pode pular!
-⭐ 1.0
-- O arquivo skillsAnimation.js foi simplificado para manter a funcionalidade essencial, priorizando a manutenção e futuras modificações.
+### 🛠️ Próximos Passos
 
-- Optei por usar módulos JavaScript (arquivos .js separados) e classes para estudar mais sobre Orientação a Objetos (OOP). Um exemplo disso é o arquivo slide.js, que utilizou conceitos de herança, encapsulamento e um pouco de abstração.  
+Adicionar testes automatizados.
+Rever CEO
+Arrumar responsividade
 
-⭐ 2.0  
-- O arquivo skillsAnimation.js foi refatorado para incorporar mais conceitos de OOP, alinhando-se com o restante do projeto, que foi projetado para seguir boas práticas de programação orientada a objetos.
+### 🏛️ Conceitos de Programação Aplicados
 
-🏛️ Herança  
-A classe SlideNav herda funcionalidades da classe Slide, reutilizando a lógica básica de navegação de slides e estendendo-a com funcionalidades específicas de navegação, como os controles de seta.
+🔄 Herança  
+A classe SlideNav herda funcionalidades da classe Slide, reutilizando a lógica básica e adicionando navegação por setas.   
 
-🏛️ Encapsulamento  
-No arquivo Slide, detalhes sobre a movimentação, posição e transição dos slides são encapsulados dentro de métodos, evitando que o código externo manipule diretamente esses dados. O mesmo acontece no arquivo Animation: a manipulação do estado de cada cartão (cartoons) e a animação de seus movimentos são controladas internamente pelos métodos da classe SkillsAnimation.
+🔒 Encapsulamento  
+O código divide responsabilidades entre classes, evitando acesso direto a propriedades internas.  
 
-🏛️ Abstração  
-No arquivo Slide, a complexidade da navegação dos slides (movimento, transições e controle de estados) é abstraída através de métodos como moveSlide(), transition(), e changeSlide(). Já no arquivo Animation, o comportamento da animação (movimento dos cartões) é abstraído pelo método animate(), onde a lógica de transformação é escondida dentro de uma única função que controla o movimento dos cartões para cima e para baixo sem expor os detalhes do cálculo do movimento.
+🎭 Abstração  
+Métodos como moveSlide() e transition() simplificam a lógica de movimentação dos slides.   
 
 ⚠️⚠️⚠️ Por algum motivo o target do botão não funciona no read.me, então melhor abrir em nova guia.  
 <a href="https://meu-portfolio-ten-blond.vercel.app/" target="_blank" rel="noopener noreferrer">
