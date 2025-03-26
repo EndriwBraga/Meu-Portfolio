@@ -1,0 +1,44 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.toggle {
+  display: flex;
+  align-items: center;
+}
+
+.toggle input {
+  opacity: 0;
+  position: absolute;
+  width: $toggle-width;
+  height: $toggle-height;
+  cursor: pointer;
+}
+
+.toggle label {
+  @include flex-center;
+  background: $color-slider;
+  width: $toggle-width;
+  border-radius: $toggle-radius;
+  padding: 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+
+}
+
+.toggle label .box {
+  background-color: $color-toggle-switch;
+  width: $box-size;
+  height: $box-size;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.toggle input:checked + label .box,
+.toggle input:checked + .box {
+  transform: translateX(3rem);
+  background: rgba(187, 125, 248);
+}
+
+.toggle input:checked + label {
+  background-color: $color-toggle-switch;
+}

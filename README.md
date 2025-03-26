@@ -28,6 +28,9 @@ Explicação sobre a organização dos arquivos no projeto:
 │── utils/         # Mixins, variáveis, funções  
 │── main.scss      # Arquivo principal que importa todos os arquivos  
 
+A convenção de usar o underscore (_) no início dos nomes de arquivos SCSS (como _buttons.scss) tem um motivo importante relacionado à organização e compilação 
+dos arquivos SCSS.
+
 ### Explicação detalhada do que cada modulo do JS faz.
 
 📄 darkMode.js → Responsável por detectar a preferência de cor (modo claro/escuro) do sistema e permitir que o usuário altere manualmente a cor da página.  

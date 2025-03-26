@@ -1,0 +1,32 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin displayJustifyCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin text-flex-center {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+@mixin flex-container($justify: space-between, $align: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin max-font-weight-size($font-weight: 600, $font-size: 30px) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+}
+
+@mixin flex-center-start {
+  display: flex;
+  text-align: center;
+  justify-content: start;
+}

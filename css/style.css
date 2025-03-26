@@ -1,8 +1,7 @@
-/*  background-color: rebeccapurple;
-
-*/
-
-* {
+@charset "UTF-8";
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,14 +9,62 @@
   list-style: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+}
+
+.toggle input {
+  opacity: 0;
+  position: absolute;
+  width: 6rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.toggle label {
+  display: flex;
+  align-items: center;
+  background: rgb(187, 125, 248);
+  width: 6rem;
+  border-radius: 2rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.toggle label .box {
+  background-color: #8a2be2;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.toggle input:checked + label .box,
+.toggle input:checked + .box {
+  transform: translateX(3rem);
+  background: rgb(187, 125, 248);
+}
+
+.toggle input:checked + label {
+  background-color: #8a2be2;
+}
+
 body {
   font-family: "poppins";
   background-color: rgba(216, 182, 250, 0.1);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.items h4 {
+  font-weight: 400;
+  font-size: 30px;
+  color: #000000;
 }
 
 .container {
@@ -27,22 +74,20 @@ a {
   padding: 34px;
 }
 
-.items h4 {
-  font-weight: 400;
-  font-size: 30px;
-  color: #000;
-}
-
 .items {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.body.dark {
+  background-color: #07091b;
+}
+
 .presentation {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 80px;
 }
 
@@ -80,17 +125,16 @@ a {
 }
 
 .floating_items {
-  padding: 0 50px;
-  height: 80px;
   display: flex;
   align-items: center;
+  padding: 0 50px;
+  height: 80px;
   border-right: 1px solid #9b3ef8;
 }
 
 .floating_items a {
-  font-family: "Poppins";
   font-size: 20px;
-  color: #000;
+  color: #000000;
 }
 
 .contato {
@@ -110,25 +154,25 @@ a {
 }
 
 .title {
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   border-bottom: 1px solid #c99de6;
 }
 
 .title h4 {
   font-weight: 600;
-  padding-top: 50px;
-  padding-bottom: 12px;
   font-size: 30px;
   color: #9b3ef8;
+  padding-top: 50px;
+  padding-bottom: 12px;
 }
 
 .content_about {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 30px;
   gap: 33px;
@@ -160,11 +204,11 @@ a {
 }
 
 .skills {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -183,9 +227,26 @@ a {
 .skills_text p {
   font-weight: 400;
   font-size: 25px;
-  color: #000;
+  color: #000000;
 }
 
+/* Animação Skills */
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.items_cards {
+  animation: moveUpDown 2s ease-in-out infinite;
+}
+
+/* Animação Skills */
 .icons {
   padding-top: 20px;
   display: flex;
@@ -210,25 +271,25 @@ a {
   border-radius: 8px;
   text-align: center;
   box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgb(255, 255, 255, 0.5);
+  /* Preciso verificar se essa propriedade a baixo precisa, já que está no body */
+  background-color: rgba(216, 182, 250, 0.1);
 }
 
 .items_cards h5 {
-  font-family: "Montserrat";
   font-weight: 600;
   font-size: 20px;
+  font-family: "Montserrat";
   line-height: 24px;
-  color: #000;
+  color: #000000;
 }
 
 .items_cards p {
-  padding-top: 14px;
-  font-family: "Poppins";
   font-weight: 400;
+  padding-top: 14px;
   font-size: 13px;
   line-height: 22px;
   text-align: center;
-  color: #000;
+  color: #000000;
 }
 
 .marginTop {
@@ -238,10 +299,10 @@ a {
 
 .studies_title {
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
-  font-size: 30px;
   font-weight: 600;
+  font-size: 30px;
   color: #9b3ef8;
   margin: 50px 0 50px 0;
   padding-bottom: 12px;
@@ -256,10 +317,10 @@ a {
 }
 
 .content_studies {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -282,7 +343,7 @@ a {
 .studies_paragraph {
   font-weight: 400;
   font-size: 20px;
-  color: #000;
+  color: #000000;
   text-align: justify;
 }
 
@@ -295,8 +356,8 @@ a {
 
 .studies_future {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-width: 125px;
   height: 125px;
   padding: 20px;
@@ -340,14 +401,14 @@ a {
 .projects_title p {
   font-weight: 400;
   font-size: 20px;
+  max-width: 1200px;
   line-height: 20px;
-  text-align: justify;
-  color: #000;
+  color: #000000;
   padding-bottom: 10px;
   padding-left: 30px;
   padding-right: 30px;
-  max-width: 1200px;
   margin: 0 auto;
+  text-align: justify;
 }
 
 .projects_title span {
@@ -367,11 +428,10 @@ a {
 }
 
 .slide li {
+  max-width: 800px;
   flex-shrink: 0;
   width: 80vw;
-  max-width: 800px;
   margin: 0 200px;
-
   border-radius: 6px;
   overflow: hidden;
   opacity: 0.8;
@@ -427,7 +487,7 @@ a {
 
 .button-Nav {
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
   margin-top: 40px;
   gap: 10px;
@@ -436,8 +496,7 @@ a {
 .button-Nav button {
   width: 50px;
   height: 50px;
-  background: rgba(216, 182, 250, 0.1) url("../assets/icons/arrow.svg") center
-    center no-repeat;
+  background: rgba(216, 182, 250, 0.1) url("../assets/icons/arrow.svg") center center no-repeat;
   border-radius: 4px;
   cursor: pointer;
   border: 1px solid #9b3ef8;
@@ -449,33 +508,32 @@ a {
 
 .container_contact {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 50px;
 }
 
 .contact h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   font-size: 30px;
   color: #9b3ef8;
-
-  display: flex;
-  text-align: center;
-  justify-content: center;
 }
 
 .contact p {
-  font-family: "Montserrat";
   font-weight: 600;
   font-size: 20px;
+  font-family: "Montserrat";
+  color: #000000;
   line-height: 49px;
-  color: #000;
 }
 
 .contact_icons {
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 50px;
@@ -485,35 +543,34 @@ a {
 .icons_network {
   display: flex;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   margin-top: 40px;
-
   width: 210px;
   height: 210px;
   padding: 20px;
   border-radius: 8px;
-  text-align: center;
   box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .icons_network img {
   display: flex;
-  align-items: center;
   text-align: center;
+  align-items: center;
 }
 
 .name_network {
   font-size: 1.5rem;
   font-weight: 400;
-  color: #000;
+  color: #000000;
 }
 
 .container_network_text {
   display: flex;
-  padding: 20px;
   text-align: center;
   justify-content: start;
+  padding: 20px;
 }
 
 .name_network_text {
@@ -523,7 +580,7 @@ a {
 
 .container_footer {
   background-color: #9b3ef8;
-  color: #000;
+  color: #000000;
   padding: 15px;
 }
 
@@ -532,52 +589,6 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 20px;
-}
-
-.toggle {
-  display: flex;
-  align-items: center;
-}
-
-.toggle input {
-  opacity: 0;
-  position: absolute;
-  width: 6rem;
-  height: 2rem;
-  cursor: pointer;
-}
-
-.toggle label {
-  display: flex;
-  align-items: center;
-  background: rgba(187, 125, 248);
-  width: 6rem;
-  border-radius: 2rem;
-  padding: 0.3rem;
-  cursor: pointer;
-  transition: background-color 0.5s ease;
-}
-
-.toggle label .box {
-  background-color: #8a2be2;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  transition: transform 0.5s ease;
-}
-
-.toggle input:checked + label .box,
-.toggle input:checked + .box {
-  transform: translateX(3rem);
-  background: rgba(187, 125, 248);
-}
-
-.toggle input:checked + label {
-  background-color: #8a2be2;
-}
-
-body.dark {
-  background-color: #07091b;
 }
 
 .dark .mySpace {
@@ -609,20 +620,4 @@ body.dark {
   color: #fff;
 }
 
-/* modificação feita quando comecei a criar a skills animation */
-@keyframes moveUpDown {
-  0% {
-      transform: translateY(0);
-  }
-  50% {
-      transform: translateY(-20px);
-  }
-  100% {
-      transform: translateY(0);
-  }
-}
-
-.items_cards {
-  animation: moveUpDown 2s ease-in-out infinite;
-}
-/* modificação feita quando comecei a criar a skills animation (entre essas 2 linhas verdes)*/
+/*# sourceMappingURL=style.css.map */
