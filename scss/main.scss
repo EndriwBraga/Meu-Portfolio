@@ -1,7 +1,9 @@
   @import "base/reset";
+  @import "base/tipography";
   @import "components/toggleButton";
   @import "utils/mixins";
   @import "utils/variables";
+ 
 
   body {
     font-family: $font-family-primary;
