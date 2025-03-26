@@ -39,7 +39,7 @@ Execute o comando abaixo para instalar as dependências necessárias:
 
 Observação: O comando ```npm run sass``` utiliza a versão local do Sass instalada no projeto para compilar o arquivo ```scss/main.scss``` em ```css/style.css```. Além disso, ele monitora automaticamente qualquer alteração nos arquivos SCSS, recompilando o CSS em tempo real.  
 
-### Explicação SCSS // Iniciando a refatoração do CSS
+## Explicação SCSS // Iniciando a refatoração do CSS
 
 /scss  
 │── base/ 🧱         # Reset, cores, tipografia  
@@ -55,7 +55,7 @@ A convenção de usar o underscore (`_`) no início dos nomes de arquivos SCSS (
 - 🔄 Modularidade Facilita a modularização do código, permitindo que você organize estilos específicos em arquivos menores e reutilizáveis.   
 - 🚀 Desempenho Ao evitar a compilação desnecessária de arquivos parciais, o processo fica mais eficiente.   
 
-### 📜 Explicação detalhada do que cada modulo do JS faz.  
+## 📜 Explicação detalhada do que cada modulo do JS faz.  
 
 📄 darkMode.js → Responsável por detectar a preferência de cor (modo claro/escuro) do sistema e permitir que o usuário altere manualmente a cor da página.  
 📄 debounce.js → Implementação do padrão debounce para limitar a frequência de chamadas a funções, utilizado em várias partes do projeto.  
@@ -65,7 +65,7 @@ A convenção de usar o underscore (`_`) no início dos nomes de arquivos SCSS (
 📄 slide.js → Responsável pelo carrossel de slides na seção "Meus Projetos", permitindo navegação interativa através dos ícones dos projetos, com versão mobile inclusa. Este carrossel foi inspirado em uma aula do curso de JavaScript da Origamid.  
 📄 skillsAnimation.js → Responsável pela animação das skills, movendo-as para cima e depois retornando à sua posição original. Utiliza requestAnimationFrame(), uma funcionalidade nativa do JavaScript, para melhorar a performance da animação.  
 
-### ✨ Principais Funcionalidades   
+## ✨ Principais Funcionalidades   
 ✅ Modo escuro automático e manual     
 ✅ Carrossel interativo de projetos    
 ✅ Mensagens dinâmicas nos cards de estudo  
