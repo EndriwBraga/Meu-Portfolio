@@ -1,0 +1,21 @@
+@media (max-width: 768px) {
+    .presentation {
+        display: flex;
+        flex-direction: column;
+        color: aquamarine;
+        background-color: red;
+    }
+  }
+
+  
+/* Mobile (Menor que 576px) */
+@media (max-width: 575px) {
+    /* Estilos para dispositivos móveis pequenos */
+  }
+  
+  /* Mobile (Entre 576px e 768px) */
+  @media (min-width: 576px) and (max-width: 767px) {
+    /* Estilos para smartphones médios */
+  }
+  
+  

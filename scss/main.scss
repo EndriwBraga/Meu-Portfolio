@@ -1,8 +1,9 @@
   @import "base/reset";
-  @import "base/tipography";
+  @import "base/typography";
   @import "components/toggleButton";
   @import "utils/mixins";
   @import "utils/variables";
+  @import "layout/responsive";
  
 
   body {
@@ -525,4 +526,5 @@
   .dark .container_footer span {
     color: $color-white;
   }
+
 
