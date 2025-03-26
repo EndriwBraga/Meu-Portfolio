@@ -8,16 +8,16 @@ Este portfólio foi criado para praticar JavaScript, mas agora estou expandindo 
 
 ## Tecnologias Utilizadas  
 🔶 HTML5  
-🎨 SASS/SCSS
+🎨 SASS/SCSS  
 ⚡ JavaScript (ES6+)
 
 ## 📂 Estrutura de Pastas
 Explicação sobre a organização dos arquivos no projeto:
 
-📂 assets/ → Contém ícones e imagens utilizadas no front-end.  
-📂 css/ → Arquivo de estilização gerado pelo SCSS (style.css). 
-📂 js/ → Contém os arquivos responsáveis por tornar o projeto interativo.  
-📂 scss/ → Arquivos SCSS organizados em módulos.
+📂 assets/ → Contém ícones e imagens utilizadas no front-end.    
+📂 css/ → Arquivo de estilização gerado pelo SCSS (style.css).   
+📂 js/ → Contém os arquivos responsáveis por tornar o projeto interativo.    
+📂 scss/ → Arquivos SCSS organizados em módulos.   
 
 ## ⚙️ Instalação e Configuração  
 
@@ -37,20 +37,23 @@ Execute o comando abaixo para instalar as dependências necessárias:
 
 ```npm run sass```   
 
-Observação: O comando npm run sass utiliza a versão local do Sass instalada no projeto para compilar o arquivo scss/main.scss em css/style.css. Além disso, ele monitora automaticamente qualquer alteração nos arquivos SCSS, recompilando o CSS em tempo real.  
+Observação: O comando ```npm run sass``` utiliza a versão local do Sass instalada no projeto para compilar o arquivo ```scss/main.scss``` em ```css/style.css```. Além disso, ele monitora automaticamente qualquer alteração nos arquivos SCSS, recompilando o CSS em tempo real.  
 
 ### Explicação SCSS // Iniciando a refatoração do CSS
 
 /scss  
-│── base/          # Reset, cores, tipografia  
-│── components/    # Estilos de botões, inputs, cards  
-│── layouts/       # Estilos de layout como header, footer, etc.  
-│── pages/         # Estilos específicos de páginas  
-│── utils/         # Mixins, variáveis, funções  
-│── main.scss      # Arquivo principal que importa todos os arquivos  
+│── base/ 🧱         # Reset, cores, tipografia  
+│── components/ 🛠️   # Estilos de botões, inputs, cards  
+│── layouts/ 🏗️      # Estilos de layout como header, footer, etc.  
+│── utils/ 🔧        # Mixins, variáveis, funções  
+│── main.scss 🌟     # Arquivo principal que importa todos os arquivos  
 
-A convenção de usar o underscore (_) no início dos nomes de arquivos SCSS (como _buttons.scss) tem um motivo importante relacionado à organização e compilação 
-dos arquivos SCSS.
+#### Por que usar `_` no início dos nomes de arquivos SCSS?  
+A convenção de usar o underscore (`_`) no início dos nomes de arquivos SCSS (como `_buttons.scss`) tem um motivo importante relacionado à organização e compilação dos arquivos SCSS.  
+
+- 🔍 Arquivos Parciais Arquivos com `_` são considerados "parciais" pelo Sass. Eles não são compilados em arquivos CSS separados, mas podem ser importados em outros arquivos SCSS.   
+- 🔄 Modularidade Facilita a modularização do código, permitindo que você organize estilos específicos em arquivos menores e reutilizáveis.   
+- 🚀 Desempenho Ao evitar a compilação desnecessária de arquivos parciais, o processo fica mais eficiente.   
 
 ### 📜 Explicação detalhada do que cada modulo do JS faz.  
 
