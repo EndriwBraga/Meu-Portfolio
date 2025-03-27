@@ -19,19 +19,35 @@ export default class hoverMessagesStudies {
 
   eventMessage() {
     this.cards.forEach((card) => {
-      card.addEventListener("mouseenter", () => {
+      const showMessage = (e) => {
+        e.stopPropagation(); 
         const message = card.dataset.message;
         this.showMessage(message);
         this.messageSurprise.classList.add("studies_hidden");
-      });
-
-      card.addEventListener("mouseleave", () => {
+      };
+  
+      const clearMessage = () => {
         this.clearMessage();
         this.messageSurprise.classList.remove("studies_hidden");
+      };
+  
+      card.addEventListener("click", showMessage);
+  
+      
+      card.addEventListener("touchstart", (e) => {
+        e.preventDefault(); // Evita rolagem acidental ao tocar
+        showMessage(e);
+      });
+  
+
+      document.addEventListener("click", (e) => {
+        if (!card.contains(e.target)) {
+          clearMessage();
+        }
       });
     });
   }
-
+  
   cardCounter() {
     this.cards.forEach((card) => {
       card.addEventListener(
