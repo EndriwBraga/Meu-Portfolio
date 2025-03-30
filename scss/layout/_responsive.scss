@@ -75,7 +75,55 @@
   .studies_card {
     padding-top: 50px;
   }
+
+  .contact_icons {
+    flex-wrap: wrap; 
+  }
+
 }
+
+@media (max-width: 780px) {
+  .container_floating .floating_menu {
+    width: 90%;
+  }
+
+  
+}
+
+@media (max-width: 680px) {
+  .container_floating .floating_menu {
+    width: 99%;
+  }
+}
+
+@media (max-width: 629px) {
+  .container_floating .floating_menu {
+    display: none;
+  }
+
+  .container .presentation {
+    gap: 10px;
+  }
+
+  .body .container_skills {
+    padding-bottom: 400px;
+  }
+
+  .container_skills .cards {
+    flex-direction: column;
+  }
+
+  .content_studies .studies_card {
+    width: 400px;
+    height: 500px;
+  }
+
+  // .container_projects .button-Nav {
+  //   display: none;
+  // }
+  
+}
+
 
 /* Mobile (Menor que 576px) */
 @media (max-width: 575px) {

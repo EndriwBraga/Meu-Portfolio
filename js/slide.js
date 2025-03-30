@@ -10,6 +10,8 @@ export class Slide {
     this.activeClass = "active";
 
     this.changeEvent = new Event("changeEvent");
+    this.isMoving = false;
+
   }
 
   // Configura a transição do slide
@@ -29,8 +31,11 @@ export class Slide {
     return this.dist.finalPositon - this.dist.movement;
   }
 
+
   // Manipula o início do evento de arrastar/tocar, tem relação com o clientX do item/element
   onStart(event) {
+    this.isMoving = true;
+
     let movetype;
     if (event.type === "mousedown") {
       event.preventDefault();
@@ -41,11 +46,13 @@ export class Slide {
       movetype = "touchmove";
     }
 
-    this.wrapper.addEventListener(movetype, this.onMove, { passive: true });
+    this.wrapper.addEventListener(movetype, (event) => this.onMove(event), { passive: true });
     this.transition(false);
   }
 
   onMove(event) {
+    if (!this.isMoving) return;
+
     const pointerPosition =
       event.type === "mousemove"
         ? event.clientX
@@ -55,24 +62,33 @@ export class Slide {
     this.moveSlide(finalPositon);
   }
 
+
   onEnd(event) {
+    if (!this.isMoving) return;
+
     const movetype = event.type === "mouseup" ? "mousemove" : "touchmove";
-    this.wrapper.removeEventListener(movetype, this.onMove);
+    this.wrapper.removeEventListener(movetype, (event) => this.onMove(event));
     this.dist.finalPositon = this.dist.movePosition;
     this.transition(true);
     this.changeSlideOnEnd();
   }
 
+
+  
+
   // Verifica se deve avançar/retroceder ao finalizar o arrastar/tocar
   changeSlideOnEnd() {
     if (this.dist.movement > 120 && this.index.next !== undefined) {
-      this.activeNextSlide();
+        console.log("Mudando para o próximo slide");
+        this.activeNextSlide();
     } else if (this.dist.movement < -120 && this.index.prev !== undefined) {
-      this.activePrevSlide();
+        console.log("Mudando para o slide anterior");
+        this.activePrevSlide();
     } else {
-      this.changeSlide(this.index.active);
+        this.changeSlide(this.index.active);
     }
-  }
+}
+
 
   addSlideEvents() {
     this.wrapper.addEventListener("mousedown", this.onStart);
@@ -127,13 +143,18 @@ export class Slide {
     this.slideArray[this.index.active].element.classList.add(this.activeClass);
   }
 
-  activePrevSlide() {
-    if (this.index.prev !== undefined) this.changeSlide(this.index.prev);
-  }
-
   activeNextSlide() {
-    if (this.index.next !== undefined) this.changeSlide(this.index.next);
-  }
+    console.log("Chamando activeNextSlide() - index antes:", this.index);
+    this.changeSlide(this.index.next);
+    console.log("Index depois:", this.index);
+}
+
+activePrevSlide() {
+    console.log("Chamando activePrevSlide() - index antes:", this.index);
+    this.changeSlide(this.index.prev);
+    console.log("Index depois:", this.index);
+}
+
 
   // Manipula o redimensionamento da janela
   onResize() {
