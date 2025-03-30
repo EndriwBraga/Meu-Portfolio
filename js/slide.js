@@ -1,4 +1,7 @@
 import debounce from "./debounce.js";
+// estou comentando esse código para o eu do futuro saber oque eu fiz em cada pedacinho, pois por mais que seja simples, esse código me proporcionou bastante aprendizado
+// e devo voltar ocasionalmente nele e ler e lembrar por que eu optei por fazer assim e talvez conforme eu for voltando, eu opte por mudar algo
+// todos os comentarios serão apagados na versão final
 
 export class Slide {
   constructor(slide, wrapper) {
@@ -7,10 +10,14 @@ export class Slide {
 
     // Informações de distância e classe ativa
     this.dist = { finalPositon: 0, startX: 0, movement: 0 };
-    this.activeClass = "active";
+    
 
     this.changeEvent = new Event("changeEvent");
     this.isMoving = false;
+
+    this.activeClass = "active";
+    this.sensitivity = 1.5;
+    this.threshold = 120;
   }
 
   // Configura a transição do slide
@@ -26,8 +33,7 @@ export class Slide {
 
   // Atualiza a posição com base na interação do usuário
   updatePosition(clientX) {
-    const sensitivity = 1.5; 
-    this.dist.movement = (this.dist.startX - clientX) * sensitivity;
+    this.dist.movement = (this.dist.startX - clientX) * this.sensitivity;
     return this.dist.finalPositon - this.dist.movement;
   }
 
@@ -37,7 +43,7 @@ export class Slide {
 
     let movetype;
     if (event.type === "mousedown") {
-      event.preventDefault();
+      //event.preventDefault(); Se eu nao sentir diferença, isso vai ser removido.
       this.dist.startX = event.clientX;
       movetype = "mousemove";
     } else if (event.type === "touchstart") {
@@ -49,7 +55,9 @@ export class Slide {
 
     // Armazena o manipulador atual para removê-lo posteriormente
     this.currentMoveHandler = (event) => this.onMove(event);
-    this.wrapper.addEventListener(movetype, this.currentMoveHandler);
+    this.wrapper.addEventListener(movetype, this.currentMoveHandler, {
+      passive: true,
+    });
 
     this.transition(false);
   }
@@ -83,19 +91,30 @@ export class Slide {
     this.dist.movement = 0; // Resetar o movimento
   }
 
+  addKeyboardEvents() {
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") this.activeNextSlide();
+        if (event.key === "ArrowLeft") this.activePrevSlide();
+    });
+}
+
   // Verifica se deve avançar/retroceder ao finalizar o arrastar/tocar
   changeSlideOnEnd() {
-    console.log("Movimento final:", this.dist.movement);
-    if (this.dist.movement > 120 && this.index.next !== undefined) {
-        console.log("Mudando para o próximo slide");
-        this.activeNextSlide();
-    } else if (this.dist.movement < -120 && this.index.prev !== undefined) {
-        console.log("Mudando para o slide anterior");
-        this.activePrevSlide();
+    let newIndex;
+
+    if (this.dist.movement > this.threshold && this.index.next !== undefined) {
+      newIndex = this.index.next;
+    } else if (
+      this.dist.movement < -this.threshold &&
+      this.index.prev !== undefined
+    ) {
+      newIndex = this.index.prev;
     } else {
-        this.changeSlide(this.index.active);
+      newIndex = this.index.active;
     }
-}
+
+    this.changeSlide(newIndex);
+  }
 
   addSlideEvents() {
     this.wrapper.addEventListener("mousedown", this.onStart);
@@ -151,9 +170,7 @@ export class Slide {
   changeToSlide(direction) {
     const newIndex = direction === "next" ? this.index.next : this.index.prev;
     if (newIndex !== undefined) {
-      console.log(`Chamando ${direction} - index antes:`, this.index);
       this.changeSlide(newIndex);
-      console.log("Index depois:", this.index);
     }
   }
   activeNextSlide() {
@@ -167,12 +184,12 @@ export class Slide {
   onResize() {
     this.slidesConfig();
     this.changeSlide(this.index.active);
-}
+  }
 
   // Adiciona ouvinte de evento de redimensionamento criado no inicio do codigo na classe
   addResizeEvent() {
     window.addEventListener("resize", debounce(this.onResize.bind(this), 200));
-}
+  }
 
   bindEvents() {
     this.onStart = this.onStart.bind(this);
@@ -192,6 +209,7 @@ export class Slide {
     this.slidesConfig();
     this.addResizeEvent();
     this.changeSlide(0);
+    this.addKeyboardEvents();
     return this;
   }
 }
@@ -218,10 +236,10 @@ export default class SlideNav extends Slide {
   // Adiciona ouvintes de eventos para os controles de navegação
   eventControl(item, index) {
     item.addEventListener("click", (event) => {
-        event.preventDefault();
-        this.changeSlide(index);
+      event.preventDefault();
+      this.changeSlide(index);
     });
-}
+  }
 
   // verifica o slide ativo para dar um style personalizado no css
   activeControlItem() {
@@ -239,7 +257,7 @@ export default class SlideNav extends Slide {
     this.activeControlItem();
     this.controlArray.forEach(this.eventControl);
     this.wrapper.addEventListener("changeEvent", this.activeControlItem); // Adiciona uma única vez
-}
+  }
 
   bindControlEvents() {
     this.eventControl = this.eventControl.bind(this);
