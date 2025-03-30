@@ -11,7 +11,6 @@ export class Slide {
 
     this.changeEvent = new Event("changeEvent");
     this.isMoving = false;
-
   }
 
   // Configura a transição do slide
@@ -27,10 +26,10 @@ export class Slide {
 
   // Atualiza a posição com base na interação do usuário
   updatePosition(clientX) {
-    this.dist.movement = (this.dist.startX - clientX) * 1.5;
+    const sensitivity = 1.5; 
+    this.dist.movement = (this.dist.startX - clientX) * sensitivity;
     return this.dist.finalPositon - this.dist.movement;
   }
-
 
   // Manipula o início do evento de arrastar/tocar, tem relação com o clientX do item/element
   onStart(event) {
@@ -41,12 +40,17 @@ export class Slide {
       event.preventDefault();
       this.dist.startX = event.clientX;
       movetype = "mousemove";
-    } else {
+    } else if (event.type === "touchstart") {
       this.dist.startX = event.changedTouches[0].clientX;
       movetype = "touchmove";
+    } else {
+      return; // Ignora outros tipos de eventos
     }
 
-    this.wrapper.addEventListener(movetype, (event) => this.onMove(event), { passive: true });
+    // Armazena o manipulador atual para removê-lo posteriormente
+    this.currentMoveHandler = (event) => this.onMove(event);
+    this.wrapper.addEventListener(movetype, this.currentMoveHandler);
+
     this.transition(false);
   }
 
@@ -62,22 +66,26 @@ export class Slide {
     this.moveSlide(finalPositon);
   }
 
-
   onEnd(event) {
     if (!this.isMoving) return;
 
     const movetype = event.type === "mouseup" ? "mousemove" : "touchmove";
-    this.wrapper.removeEventListener(movetype, (event) => this.onMove(event));
+
+    // Remove o manipulador de eventos corretamente
+    if (this.currentMoveHandler) {
+      this.wrapper.removeEventListener(movetype, this.currentMoveHandler);
+      this.currentMoveHandler = null; // Limpa a referência
+    }
+
     this.dist.finalPositon = this.dist.movePosition;
     this.transition(true);
     this.changeSlideOnEnd();
+    this.dist.movement = 0; // Resetar o movimento
   }
-
-
-  
 
   // Verifica se deve avançar/retroceder ao finalizar o arrastar/tocar
   changeSlideOnEnd() {
+    console.log("Movimento final:", this.dist.movement);
     if (this.dist.movement > 120 && this.index.next !== undefined) {
         console.log("Mudando para o próximo slide");
         this.activeNextSlide();
@@ -89,12 +97,9 @@ export class Slide {
     }
 }
 
-
   addSlideEvents() {
     this.wrapper.addEventListener("mousedown", this.onStart);
-    this.wrapper.addEventListener("touchstart", this.onStart, {
-      passive: true,
-    });
+    this.wrapper.addEventListener("touchstart", this.onStart);
     this.wrapper.addEventListener("mouseup", this.onEnd);
     this.wrapper.addEventListener("touchend", this.onEnd);
   }
@@ -143,31 +148,31 @@ export class Slide {
     this.slideArray[this.index.active].element.classList.add(this.activeClass);
   }
 
+  changeToSlide(direction) {
+    const newIndex = direction === "next" ? this.index.next : this.index.prev;
+    if (newIndex !== undefined) {
+      console.log(`Chamando ${direction} - index antes:`, this.index);
+      this.changeSlide(newIndex);
+      console.log("Index depois:", this.index);
+    }
+  }
   activeNextSlide() {
-    console.log("Chamando activeNextSlide() - index antes:", this.index);
-    this.changeSlide(this.index.next);
-    console.log("Index depois:", this.index);
-}
-
-activePrevSlide() {
-    console.log("Chamando activePrevSlide() - index antes:", this.index);
-    this.changeSlide(this.index.prev);
-    console.log("Index depois:", this.index);
-}
-
+    this.changeToSlide("next");
+  }
+  activePrevSlide() {
+    this.changeToSlide("prev");
+  }
 
   // Manipula o redimensionamento da janela
   onResize() {
-    setTimeout(() => {
-      this.slidesConfig();
-      this.changeSlide(this.index.active);
-    }, 1000);
-  }
+    this.slidesConfig();
+    this.changeSlide(this.index.active);
+}
 
   // Adiciona ouvinte de evento de redimensionamento criado no inicio do codigo na classe
   addResizeEvent() {
-    window.addEventListener("resize", this.onResize);
-  }
+    window.addEventListener("resize", debounce(this.onResize.bind(this), 200));
+}
 
   bindEvents() {
     this.onStart = this.onStart.bind(this);
@@ -213,11 +218,10 @@ export default class SlideNav extends Slide {
   // Adiciona ouvintes de eventos para os controles de navegação
   eventControl(item, index) {
     item.addEventListener("click", (event) => {
-      event.preventDefault();
-      this.changeSlide(index);
+        event.preventDefault();
+        this.changeSlide(index);
     });
-    this.wrapper.addEventListener("changeEvent", this.activeControlItem);
-  }
+}
 
   // verifica o slide ativo para dar um style personalizado no css
   activeControlItem() {
@@ -234,7 +238,8 @@ export default class SlideNav extends Slide {
 
     this.activeControlItem();
     this.controlArray.forEach(this.eventControl);
-  }
+    this.wrapper.addEventListener("changeEvent", this.activeControlItem); // Adiciona uma única vez
+}
 
   bindControlEvents() {
     this.eventControl = this.eventControl.bind(this);
