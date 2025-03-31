@@ -10,7 +10,6 @@ export class Slide {
 
     // Informações de distância e classe ativa
     this.dist = { finalPositon: 0, startX: 0, movement: 0 };
-    
 
     this.changeEvent = new Event("changeEvent");
     this.isMoving = false;
@@ -20,7 +19,6 @@ export class Slide {
     this.threshold = 120;
   }
 
-  // Configura a transição do slide
   transition(active) {
     this.slide.style.transition = active ? "transform .3s" : "";
   }
@@ -43,7 +41,7 @@ export class Slide {
 
     let movetype;
     if (event.type === "mousedown") {
-      //event.preventDefault(); Se eu nao sentir diferença, isso vai ser removido.
+      event.preventDefault();
       this.dist.startX = event.clientX;
       movetype = "mousemove";
     } else if (event.type === "touchstart") {
@@ -55,9 +53,7 @@ export class Slide {
 
     // Armazena o manipulador atual para removê-lo posteriormente
     this.currentMoveHandler = (event) => this.onMove(event);
-    this.wrapper.addEventListener(movetype, this.currentMoveHandler, {
-      passive: true,
-    });
+    this.wrapper.addEventListener(movetype, this.currentMoveHandler);
 
     this.transition(false);
   }
@@ -93,10 +89,10 @@ export class Slide {
 
   addKeyboardEvents() {
     window.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowRight") this.activeNextSlide();
-        if (event.key === "ArrowLeft") this.activePrevSlide();
+      if (event.key === "ArrowRight") this.activeNextSlide();
+      if (event.key === "ArrowLeft") this.activePrevSlide();
     });
-}
+  }
 
   // Verifica se deve avançar/retroceder ao finalizar o arrastar/tocar
   changeSlideOnEnd() {
@@ -134,6 +130,7 @@ export class Slide {
   // Configuração das posições iniciais de cada slide
   slidesConfig() {
     this.slideArray = [...this.slide.children].map((element) => {
+      element.setAttribute("role", "tabpanel"); // Define role no início
       const position = this.slidePosition(element);
       return { position, element };
     });
@@ -160,11 +157,14 @@ export class Slide {
   }
 
   changeActiveClass() {
-    this.slideArray.forEach((item) =>
-      item.element.classList.remove(this.activeClass)
-    );
+    this.slideArray.forEach((item) => {
+      item.element.classList.remove(this.activeClass);
+      item.element.setAttribute("aria-hidden", "true");
+    });
 
-    this.slideArray[this.index.active].element.classList.add(this.activeClass);
+    const activeSlide = this.slideArray[this.index.active].element;
+    activeSlide.classList.add(this.activeClass);
+    activeSlide.setAttribute("aria-hidden", "false");
   }
 
   changeToSlide(direction) {
