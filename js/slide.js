@@ -1,14 +1,10 @@
-import debounce from "./debounce.js";
-// estou comentando esse código para o eu do futuro saber oque eu fiz em cada pedacinho, pois por mais que seja simples, esse código me proporcionou bastante aprendizado
-// e devo voltar ocasionalmente nele e ler e lembrar por que eu optei por fazer assim e talvez conforme eu for voltando, eu opte por mudar algo
-// todos os comentarios serão apagados na versão final
+import debounce from "./debounce.js"; 
 
 export class Slide {
   constructor(slide, wrapper) {
     this.slide = document.querySelector(slide);
     this.wrapper = document.querySelector(wrapper);
 
-    // Informações de distância e classe ativa
     this.dist = { finalPositon: 0, startX: 0, movement: 0 };
 
     this.changeEvent = new Event("changeEvent");
@@ -23,19 +19,16 @@ export class Slide {
     this.slide.style.transition = active ? "transform .3s" : "";
   }
 
-  // Move o slide para uma posição específica
   moveSlide(distX) {
     this.dist.movePosition = distX;
     this.slide.style.transform = `translate3d(${distX}px, 0, 0)`;
   }
 
-  // Atualiza a posição com base na interação do usuário
   updatePosition(clientX) {
     this.dist.movement = (this.dist.startX - clientX) * this.sensitivity;
     return this.dist.finalPositon - this.dist.movement;
   }
 
-  // Manipula o início do evento de arrastar/tocar, tem relação com o clientX do item/element
   onStart(event) {
     this.isMoving = true;
 
@@ -48,7 +41,7 @@ export class Slide {
       this.dist.startX = event.changedTouches[0].clientX;
       movetype = "touchmove";
     } else {
-      return; // Ignora outros tipos de eventos
+      return; 
     }
 
     // Armazena o manipulador atual para removê-lo posteriormente
@@ -192,12 +185,21 @@ export class Slide {
   }
 
   bindEvents() {
-    this.onStart = this.onStart.bind(this);
-    this.onMove = this.onMove.bind(this);
-    this.onEnd = this.onEnd.bind(this);
-    this.activePrevSlide = this.activePrevSlide.bind(this);
-    this.activeNextSlide = this.activeNextSlide.bind(this);
-
+    // Lista de métodos que precisam ser vinculados ao contexto da classe
+    const methodsToBind = [
+      "onStart",
+      "onMove",
+      "onEnd",
+      "activePrevSlide",
+      "activeNextSlide",
+      "eventControl",
+      "activeControlItem",
+    ];
+  
+    methodsToBind.forEach((method) => {
+      this[method] = this[method].bind(this);
+    });
+  
     this.onResize = debounce(this.onResize.bind(this), 200);
   }
 
