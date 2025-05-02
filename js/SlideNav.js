@@ -20,6 +20,8 @@ export class SlideNav {
         console.log("Prev arrow clicked (desktop)");
         this.slide.activePrevSlide();
       });
+
+  
   
       this.nextElement.addEventListener("click", () => {
         console.log("Next arrow clicked (desktop)");
@@ -28,13 +30,13 @@ export class SlideNav {
   
       // Adiciona eventos de toque para mobile
       this.prevElement.addEventListener("touchstart", (event) => {
-        event.preventDefault(); // Impede comportamentos padrão de toque
+        
         console.log("Prev arrow touched (mobile)");
         this.slide.activePrevSlide();
       });
   
       this.nextElement.addEventListener("touchstart", (event) => {
-        event.preventDefault(); // Impede comportamentos padrão de toque
+        
         console.log("Next arrow touched (mobile)");
         this.slide.activeNextSlide();
       });

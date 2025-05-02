@@ -47,6 +47,8 @@ export class Slide {
   onMove(event) {
     if (!this.isMoving) return;
 
+    event.preventDefault();
+
     const pointerPosition = this.getPointerPosition(event);
     const finalPositon = this.updatePosition(pointerPosition);
     this.moveSlide(finalPositon);
