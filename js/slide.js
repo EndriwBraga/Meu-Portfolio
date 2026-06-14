@@ -69,6 +69,7 @@ export class Slide {
     this.transition(true);
     this.changeSlideOnEnd();
     this.dist.movement = 0;
+    this.isMoving = false; // teste 14/06/2024
   }
 
   addKeyboardEvents() {
@@ -98,8 +99,9 @@ export class Slide {
   addSlideEvents() {
     this.wrapper.addEventListener("mousedown", this.onStart.bind(this));
     this.wrapper.addEventListener("touchstart", this.onStart.bind(this));
-    this.wrapper.addEventListener("mouseup", this.onEnd.bind(this));
-    this.wrapper.addEventListener("touchend", this.onEnd.bind(this));
+    
+    document.addEventListener("mouseup", this.onEnd.bind(this));
+    document.addEventListener("touchend", this.onEnd.bind(this))
   }
 
   slidePosition(slide) {
