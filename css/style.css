@@ -431,7 +431,6 @@ body {
   width: 40%;
 }
 
-/*posso tirar o center disso depois se eu nao gostar COMENTARIO A APAGAR*/
 .studies_span {
   display: flex;
   align-items: center;
@@ -551,7 +550,6 @@ body {
   transform: scale(1);
 }
 
-/* Controles de navegação personalizado na aba projetos.*/
 .custom-control {
   display: flex;
   justify-content: center;
