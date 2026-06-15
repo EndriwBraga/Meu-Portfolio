@@ -4,6 +4,7 @@ export default class hoverMessagesStudies {
   constructor() {
     this.cards = document.querySelectorAll(".studies_future");
     this.messageElement = document.getElementById("message");
+    this.container = document.querySelector(".content_studies");
     this.messageSurprise = document.getElementById("messageSurprise");
     this.hoveredCards = new Set();
   }
@@ -17,62 +18,65 @@ export default class hoverMessagesStudies {
       "Passe o mouse em cima dos cards para mais informações! ";
   }
 
-  eventMessage() {
-    this.cards.forEach((card) => {
-      const showMessage = (e) => {
-        e.stopPropagation(); 
-        const message = card.dataset.message;
-        this.showMessage(message);
-        this.messageSurprise.classList.add("studies_hidden");
-      };
-  
-      const clearMessage = () => {
-        this.clearMessage();
-        this.messageSurprise.classList.remove("studies_hidden");
-      };
-  
-      card.addEventListener("click", showMessage);
-  
-      
-      card.addEventListener("touchstart", (e) => {
-        e.preventDefault(); // Evita rolagem acidental ao tocar
-        showMessage(e);
-      });
-  
 
-      document.addEventListener("click", (e) => {
-        if (!card.contains(e.target)) {
-          clearMessage();
-        }
-      });
-    });
-  }
-  
-  cardCounter() {
-    this.cards.forEach((card) => {
-      card.addEventListener(
-        "mouseover",
-        debounce(() => {
-          if (!this.hoveredCards.has(card)) {
-            this.hoveredCards.add(card);
-          }
-
-          this.isHovered = false;
-          for (let i = 0; i < this.cards.length; i++) {
-            if (this.cards[i].matches(":hover")) {
-              this.isHovered = true;
-              break;
-            }
-          }
-
-          if (this.hoveredCards.size === this.cards.length && !this.isHovered) {
-            this.messageSurprise.classList.remove("studies_hidden");
-          }
-        }, 200)
-      );
-    });
+  trackCard(card) {
+  if (!this.hoveredCards.has(card)) {
+    this.hoveredCards.add(card);
   }
 
+  let isHovered = false;
+  for (let i = 0; i < this.cards.length; i++) {
+    if (this.cards[i].matches(":hover")) {
+      isHovered = true;
+      break;
+    }
+  }
+
+  if (this.hoveredCards.size === this.cards.length && !isHovered) {
+    this.messageSurprise.classList.remove("studies_hidden");
+  }
+}
+
+eventMessage() {
+  this.cards.forEach((card) => {
+    const showMessage = (e) => {
+      e.stopPropagation();
+      const message = card.dataset.message;
+      this.showMessage(message);
+      this.messageSurprise.classList.add("studies_hidden");
+    };
+
+    card.addEventListener("mouseover", showMessage);
+    card.addEventListener("mouseout", () => this.clearMessage());
+
+    card.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showMessage(e);
+      this.trackCard(card); 
+    });
+  });
+
+  const handleOutsideClick = (e) => {
+    const clickedInsideContainer = this.container.contains(e.target);
+
+    if (!clickedInsideContainer) {
+      this.clearMessage();
+    }
+  };
+
+  document.addEventListener("click", handleOutsideClick);
+  document.addEventListener("touchstart", handleOutsideClick);
+}
+  
+cardCounter() {
+  this.cards.forEach((card) => {
+    card.addEventListener(
+      "mouseover",
+      debounce(() => this.trackCard(card), 200)
+    );
+  });
+}
   init() {
     this.cardCounter();
     this.eventMessage();
